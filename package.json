@@ -1,0 +1,64 @@
+{
+  "name": "msw-validate",
+  "version": "0.1.0",
+  "description": "Mock Service Worker request validation",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajaishankar/msw-validate.git"
+  },
+  "license": "MIT",
+  "author": "Ajai Shankar",
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "msw",
+    "testing",
+    "validation",
+    "scenarios"
+  ],
+  "files": [
+    "dist/index.js",
+    "dist/cjs/index.js",
+    "dist/index.d.ts",
+    "dist/dependencies.txt"
+  ],
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "rollup --bundleConfigAsCjs -c",
+    "clean": "rimraf dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepack": "npm run test && npm run build",
+    "test": "jest --forceExit",
+    "test:coverage": "rimraf coverage && jest --coverage --forceExit",
+    "test:codecov": "npm run test:coverage && codecov"
+  },
+  "peerDependencies": {
+    "msw": "^2.0.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.2.0",
+    "@rollup/plugin-commonjs": "^23.0.7",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
+    "@types/qs": "^6.9.11",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@usebruno/query": "^0.1.0",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.2.0",
+    "msw": "^2.1.5",
+    "prettier": "^3.0.1",
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "qs": "^6.11.2",
+    "rimraf": "^5.0.5",
+    "rollup": "3.29.4",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-license": "^3.2.0",
+    "ts-jest": "^29.0.5",
+    "typescript": "^5.1.6"
+  }
+}
