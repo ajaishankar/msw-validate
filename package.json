@@ -10,7 +10,7 @@
   "author": "Ajai Shankar",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types.d.ts",
   "keywords": [
     "msw",
     "testing",
@@ -20,7 +20,7 @@
   "files": [
     "dist/index.js",
     "dist/cjs/index.js",
-    "dist/index.d.ts",
+    "dist/types.d.ts",
     "dist/dependencies.txt"
   ],
   "scripts": {
