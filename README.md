@@ -1,12 +1,15 @@
+[![version(scoped)](https://img.shields.io/npm/v/msw-validate.svg)](https://www.npmjs.com/package/msw-validate)
+[![codecov](https://codecov.io/gh/ajaishankar/msw-validate/graph/badge.svg?token=ONNMY1ZSXM)](https://codecov.io/gh/ajaishankar/msw-validate)
+
 # msw-validate 
 
 ### Mock Service Worker Request Validation
 
-[Mock Service Worker](https://mswjs.io/) allows you to intercept requests and return mock responses from handlers.  It works great for unit tests where mock handlers can be registered to verify application behavior given different responses.
+[Mock Service Worker](https://mswjs.io/) allows you to intercept requests and return mock responses from handlers.  It works great for unit tests where mock handlers can be registered to verify application behavior for different responses.
 
-But testing network calls should not be limited to just mocking responses. Validating that a particular endpoint was called with the correct params, headers, query, cookie or body is absolutely necessary for a good unit test.
+But testing network calls should not be limited to just mocking responses. Validating that a particular endpoint was called with the correct params, headers, query, cookie or body is a must for a good unit test.
 
-msw-validate allows you to declaratively define handlers that perform request validations and also to easily setup per test scenarios. This library follows the [msw best practice](https://mswjs.io/docs/best-practices/avoid-request-assertions#request-validity) of asserting request validity by returning a error response when validation fails.
+msw-validate allows you to declaratively define handlers that perform request validations, and also to easily setup per test scenarios. This library follows the [msw best practice](https://mswjs.io/docs/best-practices/avoid-request-assertions#request-validity) of asserting request validity by returning a error response when validation fails.
 
 #### Quickstart
 
@@ -95,19 +98,19 @@ The Validation Object
 
 - Keys are paths to quickly get at the deeply nested field that needs to be checked  
     - [bruno-query](https://github.com/usebruno/bruno/tree/main/packages/bruno-query#bruno-query) is used to pick the value  
-    It has same syntax as [lodash get](https://lodash.com/docs/4.17.15#get) and also array and deep navigation support
-- Only scalars and array of scalars are allowed as values restricting validations to simple one liners
+    It has same syntax as [lodash get](https://lodash.com/docs/4.17.15#get) with added array and deep navigation support
+- Only scalars and array of scalars are allowed as values, resulting in simple one line validations
 - Custom validation functions are allowed as in `query.limit` above
 - Custom error messages can be returned from validation functions
 - Custom responses can be returned as in `headers.authorization` above
 - Query and FormData are converted to objects with the [qs](https://www.npmjs.com/package/qs) package
 - A handler that expects form data can declare the `requestBodyType: "form-data"`  
-    - Please note that due to the following [node bug](https://github.com/mswjs/msw/issues/1843#issuecomment-1801622672) you might need to pass `--forceExit` to jest  
+    - Do note that due to the following [node bug](https://github.com/mswjs/msw/issues/1843#issuecomment-1801622672) you might need to pass `--forceExit` to jest  
     - File uploads are not supported in this library, but can be enabled by writing a custom msw handler
 
-#### Responses
+#### Response
 
-Once validation succeeds the data in the `return` field is sent as a json response.
+On success, the data or HttpResponse specified as return value is sent as a json response
 
 Custom response functions can be specified and take the same argument as a msw resolver plus an invocation count.
 

@@ -157,9 +157,9 @@ function createHandler<ResponseBodyType extends JsonBodyType>(
  *
  * The validate block lists the request assertions.
  *
- * On success the data or HttpResponse in the return field is sent as a json response.
+ * On success, the data or HttpResponse specified as return value is sent as a json response
  *
- * Dynamic responses can be enabled by specifying a function in the return field
+ * Dynamic responses can be enabled by providing a function as the return
  *
  * The function takes same argument as a msw resolver plus an invocation count
  *

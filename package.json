@@ -1,7 +1,7 @@
 {
   "name": "msw-validate",
   "version": "0.1.0",
-  "description": "Mock Service Worker request validation",
+  "description": "Mock Service Worker Request Validation",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ajaishankar/msw-validate.git"
