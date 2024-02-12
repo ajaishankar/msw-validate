@@ -55,11 +55,11 @@ describe("order service", () => {
 })
 ```
 
-If the order service incorrectly sends a `?status=canceled` to the service, a 400 response will be returned with following details.
+If the getCurrentOrders method sends `?status=canceled` instead of `?status=ordered&status=shipped` to the endpoint, a 400 response will be returned with following details.
 
 ```ts
 {
-  path: "status",
+  path: "query.status",
   value: "canceled",
   error: 'expected ["ordered", "shipped"]'
 }
@@ -104,7 +104,7 @@ The Validation Object
 - Custom error messages can be returned from validation functions
 - Custom responses can be returned as in `headers.authorization` above
 - Query and FormData are converted to objects with the [qs](https://www.npmjs.com/package/qs) package
-- A handler that expects form data can declare the `requestBodyType: "form-data"`  
+- A handler that expects FormData can declare `requestBodyType: "form-data"`  
     - Do note that due to the following [node bug](https://github.com/mswjs/msw/issues/1843#issuecomment-1801622672) you might need to pass `--forceExit` to jest  
     - File uploads are not supported in this library, but can be enabled by writing a custom msw handler
 
